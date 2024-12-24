@@ -25,11 +25,17 @@ steps:
   inputs:
     script: 'npm run build'
     workingDirectory: '$(Build.SourcesDirectory)/samplenodejs'
+  displayName: 'Run application'
 
+- task: CmdLine@2
+  inputs:
+    script: 'npm test -- --reporter mocha-junit-reporter --reporter-options mochaFile=test-results.xml'
+    workingDirectory: '$(Build.SourcesDirectory)/samplenodejs/tests'
+  displayName: 'Run unit tests'
 - task: PublishTestResults@2
   inputs:
     testResultsFormat: 'JUnit'
-    testResultsFiles: '**/TEST-*.xml'
+    testResultsFiles: '**/test-*.xml'
 
 - task: CopyFiles@2
   inputs:
@@ -44,4 +50,3 @@ steps:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'node24dec'
     publishLocation: 'Container'
-   
