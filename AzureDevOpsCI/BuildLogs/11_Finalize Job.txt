@@ -1,0 +1,6 @@
+2024-12-24T14:37:13.7568617Z ##[section]Starting: Finalize Job
+2024-12-24T14:37:13.7578681Z Cleaning up task key
+2024-12-24T14:37:13.7579704Z Start cleaning up orphan processes.
+2024-12-24T14:37:13.7789402Z Terminate orphan process: pid (8518) (node)
+2024-12-24T14:37:13.7830694Z Terminate orphan process: pid (8538) (node)
+2024-12-24T14:37:13.7848984Z ##[section]Finishing: Finalize Job

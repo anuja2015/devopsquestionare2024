@@ -1,0 +1,17 @@
+2024-12-24T14:36:43.0521993Z ##[section]Starting: PublishTestResults
+2024-12-24T14:36:43.0529997Z ==============================================================================
+2024-12-24T14:36:43.0530304Z Task         : Publish Test Results
+2024-12-24T14:36:43.0530452Z Description  : Publish test results to Azure Pipelines
+2024-12-24T14:36:43.0530628Z Version      : 2.248.3
+2024-12-24T14:36:43.0530784Z Author       : Microsoft Corporation
+2024-12-24T14:36:43.0530937Z Help         : https://docs.microsoft.com/azure/devops/pipelines/tasks/test/publish-test-results
+2024-12-24T14:36:43.0531174Z ==============================================================================
+2024-12-24T14:36:56.7558982Z Result Attachments will be stored in LogStore
+2024-12-24T14:36:56.9633668Z Run Attachments will be stored in LogStore
+2024-12-24T14:36:58.4348487Z Publishing test results to test run '2'.
+2024-12-24T14:36:58.4368915Z TestResults To Publish 1, Test run id:2
+2024-12-24T14:36:58.4407782Z Test results publishing 1, remaining: 0. Test run id: 2
+2024-12-24T14:36:59.3874334Z ##[section]Async Command Start: Publish test results
+2024-12-24T14:37:00.6578585Z Published Test Run : https://dev.azure.com/dec2024devops/DevOpsQuestionaire/_TestManagement/Runs?runId=2&_a=runCharts
+2024-12-24T14:37:01.5128147Z ##[section]Async Command End: Publish test results
+2024-12-24T14:37:01.5129999Z ##[section]Finishing: PublishTestResults

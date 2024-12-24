@@ -1,0 +1,40 @@
+2024-12-24T14:35:54.9999537Z ##[section]Starting: Checkout DevOpsQuestionaire@master to s
+2024-12-24T14:35:55.0128185Z ==============================================================================
+2024-12-24T14:35:55.0129499Z Task         : Get sources
+2024-12-24T14:35:55.0129842Z Description  : Get sources from a repository. Supports Git, TfsVC, and SVN repositories.
+2024-12-24T14:35:55.0130005Z Version      : 1.0.0
+2024-12-24T14:35:55.0130280Z Author       : Microsoft
+2024-12-24T14:35:55.0130650Z Help         : [More Information](https://go.microsoft.com/fwlink/?LinkId=798199)
+2024-12-24T14:35:55.0130932Z ==============================================================================
+2024-12-24T14:35:57.3735357Z Syncing repository: DevOpsQuestionaire (Git)
+2024-12-24T14:35:57.3742451Z ##[command]git version
+2024-12-24T14:35:57.3751689Z git version 2.34.1
+2024-12-24T14:35:57.3753348Z ##[command]git config --get remote.origin.url
+2024-12-24T14:35:57.3762579Z ##[command]git clean -ffdx
+2024-12-24T14:35:57.3768528Z Removing samplenodejs/node_modules/
+2024-12-24T14:35:57.3768892Z Removing samplenodejs/package-lock.json
+2024-12-24T14:35:57.3770427Z ##[command]git reset --hard HEAD
+2024-12-24T14:35:57.3775714Z HEAD is now at 5bc8ac7 Update azure-pipelines.yml for Azure Pipelines
+2024-12-24T14:35:57.3781722Z ##[command]git config gc.auto 0
+2024-12-24T14:35:57.3787501Z ##[command]git config core.longpaths true
+2024-12-24T14:35:57.3793237Z ##[command]git config --get-all http.https://dec2024devops@dev.azure.com/dec2024devops/DevOpsQuestionaire/_git/DevOpsQuestionaire.extraheader
+2024-12-24T14:35:57.3799362Z ##[command]git config --get-all http.extraheader
+2024-12-24T14:35:57.3805073Z ##[command]git config --get-regexp .*extraheader
+2024-12-24T14:35:57.3810996Z ##[command]git config --get-all http.proxy
+2024-12-24T14:35:57.3816720Z ##[command]git config http.version HTTP/1.1
+2024-12-24T14:35:57.3824037Z ##[command]git --config-env=http.extraheader=env_var_http.extraheader fetch --force --tags --prune --prune-tags --progress --no-recurse-submodules origin --depth=1  +307af9a47f5dae670fa55702b4b76943ef3fdc8a:refs/remotes/origin/307af9a47f5dae670fa55702b4b76943ef3fdc8a
+2024-12-24T14:35:57.3828185Z remote: Azure Repos        
+2024-12-24T14:35:57.3828341Z remote: 
+2024-12-24T14:35:57.3828497Z remote: Found 11 objects to send. (0 ms)        
+2024-12-24T14:35:57.3828729Z From https://dev.azure.com/dec2024devops/DevOpsQuestionaire/_git/DevOpsQuestionaire
+2024-12-24T14:35:57.3829007Z  * [new ref]         307af9a47f5dae670fa55702b4b76943ef3fdc8a -> origin/307af9a47f5dae670fa55702b4b76943ef3fdc8a
+2024-12-24T14:35:59.0639550Z ##[command]git --config-env=http.extraheader=env_var_http.extraheader fetch --force --tags --prune --prune-tags --progress --no-recurse-submodules origin --depth=1  +307af9a47f5dae670fa55702b4b76943ef3fdc8a
+2024-12-24T14:35:59.0649853Z remote: Azure Repos        
+2024-12-24T14:35:59.0650216Z remote: 
+2024-12-24T14:35:59.0650575Z remote: Found 0 objects to send. (0 ms)        
+2024-12-24T14:35:59.0651116Z From https://dev.azure.com/dec2024devops/DevOpsQuestionaire/_git/DevOpsQuestionaire
+2024-12-24T14:35:59.0651834Z  * branch            307af9a47f5dae670fa55702b4b76943ef3fdc8a -> FETCH_HEAD
+2024-12-24T14:36:00.8841966Z ##[command]git checkout --progress --force refs/remotes/origin/307af9a47f5dae670fa55702b4b76943ef3fdc8a
+2024-12-24T14:36:00.8855525Z Previous HEAD position was 5bc8ac7 Update azure-pipelines.yml for Azure Pipelines
+2024-12-24T14:36:00.8856131Z HEAD is now at 307af9a Updated package.json
+2024-12-24T14:36:00.8999066Z ##[section]Finishing: Checkout DevOpsQuestionaire@master to s

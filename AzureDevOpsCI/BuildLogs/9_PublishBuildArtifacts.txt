@@ -1,0 +1,25 @@
+2024-12-24T14:37:03.6731113Z ##[section]Starting: PublishBuildArtifacts
+2024-12-24T14:37:03.6736734Z ==============================================================================
+2024-12-24T14:37:03.6736902Z Task         : Publish build artifacts
+2024-12-24T14:37:03.6736993Z Description  : Publish build artifacts to Azure Pipelines or a Windows file share
+2024-12-24T14:37:03.6737124Z Version      : 1.247.1
+2024-12-24T14:37:03.6737432Z Author       : Microsoft Corporation
+2024-12-24T14:37:03.6737523Z Help         : https://docs.microsoft.com/azure/devops/pipelines/tasks/utility/publish-build-artifacts
+2024-12-24T14:37:03.6737668Z ==============================================================================
+2024-12-24T14:37:10.6992976Z ##[section]Async Command Start: Upload Artifact
+2024-12-24T14:37:10.6994993Z Uploading 2 files
+2024-12-24T14:37:11.2024706Z Creating dedup client:
+2024-12-24T14:37:11.2025110Z  - Max dedup parallelism: 192
+2024-12-24T14:37:11.2025333Z  - Using blobstore domain: 0
+2024-12-24T14:37:11.2025578Z  - Using redirect timeout: 
+2024-12-24T14:37:11.2025879Z  - Hash type: Dedup64K
+2024-12-24T14:37:11.2026105Z Building file tree
+2024-12-24T14:37:11.7002790Z Uploaded 0 out of 494 bytes.
+2024-12-24T14:37:12.7014094Z Uploaded 494 out of 494 bytes.
+2024-12-24T14:37:12.7014696Z Associating files
+2024-12-24T14:37:12.7014923Z Total files: 2 ---- Associated files: 0 (0%)
+2024-12-24T14:37:13.2027015Z File upload succeed.
+2024-12-24T14:37:13.2027609Z Upload '/home/azureuser/myagent/_work/3/a' to file container: '#/18321242/node24dec'
+2024-12-24T14:37:13.3880293Z Associated artifact 5 with build 25
+2024-12-24T14:37:13.3880506Z ##[section]Async Command End: Upload Artifact
+2024-12-24T14:37:13.3881518Z ##[section]Finishing: PublishBuildArtifacts

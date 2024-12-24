@@ -1,0 +1,19 @@
+2024-12-24T14:36:37.1603846Z ##[section]Starting: Run unit tests
+2024-12-24T14:36:37.1609925Z ==============================================================================
+2024-12-24T14:36:37.1610124Z Task         : Command line
+2024-12-24T14:36:37.1610222Z Description  : Run a command line script using Bash on Linux and macOS and cmd.exe on Windows
+2024-12-24T14:36:37.1610622Z Version      : 2.246.1
+2024-12-24T14:36:37.1610732Z Author       : Microsoft Corporation
+2024-12-24T14:36:37.1610840Z Help         : https://docs.microsoft.com/azure/devops/pipelines/tasks/utility/command-line
+2024-12-24T14:36:37.1610998Z ==============================================================================
+2024-12-24T14:36:42.6335433Z Generating script.
+2024-12-24T14:36:42.6358261Z Script contents:
+2024-12-24T14:36:42.6358729Z npm test -- --reporter mocha-junit-reporter --reporter-options mochaFile=test-results.xml
+2024-12-24T14:36:42.6359255Z ========================== Starting Command Output ===========================
+2024-12-24T14:36:42.6389890Z [command]/usr/bin/bash --noprofile --norc /home/azureuser/myagent/_work/_temp/51c9eba0-4157-498b-a5dd-7bc605a566dc.sh
+2024-12-24T14:36:42.7928945Z 
+2024-12-24T14:36:42.7929813Z > samplenodejs@1.0.0 test
+2024-12-24T14:36:42.7930339Z > mocha tests/test.js --reporter mocha-junit-reporter --reporter-options mochaFile=test-results.xml
+2024-12-24T14:36:42.7931000Z 
+2024-12-24T14:36:43.0423041Z 
+2024-12-24T14:36:43.0495371Z ##[section]Finishing: Run unit tests

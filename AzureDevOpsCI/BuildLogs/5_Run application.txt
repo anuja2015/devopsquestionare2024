@@ -1,0 +1,20 @@
+2024-12-24T14:36:19.0837793Z ##[section]Starting: Run application
+2024-12-24T14:36:19.0846881Z ==============================================================================
+2024-12-24T14:36:19.0847463Z Task         : Command line
+2024-12-24T14:36:19.0847592Z Description  : Run a command line script using Bash on Linux and macOS and cmd.exe on Windows
+2024-12-24T14:36:19.0847810Z Version      : 2.246.1
+2024-12-24T14:36:19.0848030Z Author       : Microsoft Corporation
+2024-12-24T14:36:19.0848189Z Help         : https://docs.microsoft.com/azure/devops/pipelines/tasks/utility/command-line
+2024-12-24T14:36:19.0848412Z ==============================================================================
+2024-12-24T14:36:21.7710116Z Generating script.
+2024-12-24T14:36:21.7731412Z Script contents:
+2024-12-24T14:36:21.7731747Z npm run build
+2024-12-24T14:36:21.7732094Z ========================== Starting Command Output ===========================
+2024-12-24T14:36:21.7757854Z [command]/usr/bin/bash --noprofile --norc /home/azureuser/myagent/_work/_temp/8d3f9875-65b9-4377-a447-00c9a9a46253.sh
+2024-12-24T14:36:21.9226124Z 
+2024-12-24T14:36:21.9235707Z > samplenodejs@1.0.0 build
+2024-12-24T14:36:21.9258522Z > node app.js &
+2024-12-24T14:36:21.9259140Z 
+2024-12-24T14:36:22.0625325Z Server is running on http://localhost:3010
+2024-12-24T14:36:31.9446311Z The STDIO streams did not close within 10 seconds of the exit event from process '/usr/bin/bash'. This may indicate a child process inherited the STDIO streams and has not yet exited.
+2024-12-24T14:36:37.1578483Z ##[section]Finishing: Run application

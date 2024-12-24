@@ -1,0 +1,10 @@
+2024-12-24T14:37:13.3905268Z ##[section]Starting: Checkout DevOpsQuestionaire@master to s
+2024-12-24T14:37:13.3908953Z ==============================================================================
+2024-12-24T14:37:13.3909128Z Task         : Get sources
+2024-12-24T14:37:13.3909207Z Description  : Get sources from a repository. Supports Git, TfsVC, and SVN repositories.
+2024-12-24T14:37:13.3909345Z Version      : 1.0.0
+2024-12-24T14:37:13.3909438Z Author       : Microsoft
+2024-12-24T14:37:13.3909514Z Help         : [More Information](https://go.microsoft.com/fwlink/?LinkId=798199)
+2024-12-24T14:37:13.3909636Z ==============================================================================
+2024-12-24T14:37:13.7408658Z Cleaning any cached credential from repository: DevOpsQuestionaire (Git)
+2024-12-24T14:37:13.7537236Z ##[section]Finishing: Checkout DevOpsQuestionaire@master to s
