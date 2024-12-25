@@ -18,12 +18,14 @@ steps:
 
 - task: Npm@1
   inputs:
-    command: 'install'
+    command: 'custom'
     workingDir: '$(Build.SourcesDirectory)/samplenodejs'
-  displayName: 'npm install'
+    customCommand: 'install --legacy-peer-deps'
+  displayName: 'Install dependencies'
 - task: CmdLine@2
   inputs:
-    script: 'npm run build'
+    script: |
+      npm run build
     workingDirectory: '$(Build.SourcesDirectory)/samplenodejs'
   displayName: 'Run application'
 
@@ -37,16 +39,17 @@ steps:
     testResultsFormat: 'JUnit'
     testResultsFiles: '**/test-*.xml'
 
-- task: CopyFiles@2
+- task: ArchiveFiles@2
   inputs:
-    SourceFolder: '$(Build.SourcesDirectory)'
-    Contents: |
-      samplenodejs/public/*
-      samplenodejs/app.js
-    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+    rootFolderOrFile: '$(System.DefaultWorkingDirectory)/samplenodejs'
+    includeRootFolder: false
+    archiveType: 'zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    replaceExistingArchive: true
 
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
     ArtifactName: 'node24dec'
     publishLocation: 'Container'
+
