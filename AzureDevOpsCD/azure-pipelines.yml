@@ -1,0 +1,100 @@
+# Node.js Express Web App to Linux on Azure
+# Build a Node.js Express app and deploy it to Azure as a Linux web app.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+
+trigger:
+- master
+
+variables:
+
+  # Azure Resource Manager connection created during pipeline creation
+  azureSubscription: 'd3df9ba4-21d2-41ed-8c5b-8f98396e968f'
+
+  # Web app name
+  webAppName: 'sample202425'
+
+  environmentName: 'sample202425'
+
+stages:
+- stage: Build
+  displayName: Build stage
+  jobs:
+  - job: Build
+    displayName: Build
+    pool:
+      name: Default
+
+    steps:
+    - task: NodeTool@0
+      inputs:
+        versionSource: 'spec'
+        versionSpec: '23.x'
+      displayName: 'Install Node.js'
+
+    - task: Npm@1
+      inputs:
+        command: 'custom'
+        workingDir: '$(Build.SourcesDirectory)/samplenodejs'
+        customCommand: 'install --legacy-peer-deps'
+      displayName: 'Install dependencies'
+    - task: CmdLine@2
+      inputs:
+        script: |
+          npm run build
+        workingDirectory: '$(Build.SourcesDirectory)/samplenodejs'
+      displayName: 'Run application'
+
+    - task: CmdLine@2
+      inputs:
+        script: 'npm test -- --reporter mocha-junit-reporter --reporter-options mochaFile=test-results.xml'
+        workingDirectory: '$(Build.SourcesDirectory)/samplenodejs/tests'
+      displayName: 'Run unit tests'
+    - task: PublishTestResults@2
+      inputs:
+        testResultsFormat: 'JUnit'
+        testResultsFiles: '**/test-*.xml'
+    - task: ArchiveFiles@2
+      inputs:
+       rootFolderOrFile: '$(System.DefaultWorkingDirectory)/samplenodejs'
+       includeRootFolder: false
+       archiveType: 'zip'
+       archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+       replaceExistingArchive: true
+    - task: PublishBuildArtifacts@1
+      inputs:
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+        ArtifactName: 'drop'
+        publishLocation: 'Container'
+
+
+- stage: Deploy
+  displayName: Deploy stage
+  dependsOn: Build
+  condition: succeeded()
+  jobs:
+  - deployment: Deploy
+    displayName: Deploy to Azure App
+    environment: $(environmentName)
+    pool:
+      name: Default
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - task: DownloadPipelineArtifact@2
+            inputs:
+              buildType: 'current'
+              artifactName: 'node24dec'
+              itemPattern: '**/*.zip'
+              targetPath: '$(Build.ArtifactStagingDirectory)'
+        
+          - task: AzureWebApp@1
+            displayName: 'Azure Web App Deploy: sample202425'
+            inputs:
+              azureSubscription: $(azureSubscription)
+              appType: webAppLinux
+              appName: $(webAppName)
+              runtimeStack: 'NODE|20LTS'
+              package: $(Pipeline.Workspace)/drop/$(Build.BuildId).zip
+              startUpCommand: 'npm run start'
