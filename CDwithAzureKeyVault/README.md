@@ -1,20 +1,13 @@
-# Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
 
-# Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+#### Azure Key Vault creation
+![Screenshot 2024-12-26 172505](https://github.com/user-attachments/assets/eb82630f-805c-4a7c-8ea9-aeaa5e947ac0)
 
-# Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+#### Service principal creation
 
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
+![Screenshot 2024-12-26 173409](https://github.com/user-attachments/assets/ebac397b-0c48-4903-be13-382e989a185e)
 
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+#### Role Assignment
+![Screenshot 2024-12-26 174046](https://github.com/user-attachments/assets/d8eb4f01-9077-4339-a6b4-6e034acba2de)
+
+#### Variables for pipeline
+![Screenshot 2024-12-26 181834](https://github.com/user-attachments/assets/d79a538b-67c8-4f3b-a6df-28bbd446b35a)
