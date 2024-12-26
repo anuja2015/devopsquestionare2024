@@ -5,3 +5,8 @@
 ### Docker build logs
 ![Screenshot 2024-12-26 210453](https://github.com/user-attachments/assets/003b8e0c-9501-4156-8557-a264b68fbeee)
 ![Screenshot 2024-12-26 210509](https://github.com/user-attachments/assets/ee914144-22d0-4a11-88c2-5cc86cab691a)
+
+### ACR push logs
+
+![Screenshot 2024-12-26 212543](https://github.com/user-attachments/assets/811742e8-4560-4946-a824-0fa086749bfc)
+![Screenshot 2024-12-26 212619](https://github.com/user-attachments/assets/5a01369e-58b4-465c-b1e3-ca80ddb507e1)
