@@ -64,7 +64,7 @@ stages:
     - task: PublishBuildArtifacts@1
       inputs:
         PathtoPublish: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
-        ArtifactName: 'drop'
+        ArtifactName: 'node24dec'
         publishLocation: 'Container'
 
 
@@ -82,19 +82,13 @@ stages:
       runOnce:
         deploy:
           steps:
-          - task: DownloadPipelineArtifact@2
+          - task: AzureRmWebAppDeployment@4
             inputs:
-              buildType: 'current'
-              artifactName: 'node24dec'
-              itemPattern: '**/*.zip'
-              targetPath: '$(Build.ArtifactStagingDirectory)'
-        
-          - task: AzureWebApp@1
-            displayName: 'Azure Web App Deploy: sample202425'
-            inputs:
-              azureSubscription: $(azureSubscription)
-              appType: webAppLinux
-              appName: $(webAppName)
+              ConnectionType: 'AzureRM'
+              azureSubscription: '$(azureSubscription)'
+              appType: 'webAppLinux' # Use 'webApp' for Windows-based App Services
+              WebAppName: '$(webAppName)'
+              package: '$(Pipeline.Workspace)/node24dec/$(Build.BuildId).zip'
               runtimeStack: 'NODE|20LTS'
-              package: $(Pipeline.Workspace)/drop/$(Build.BuildId).zip
-              startUpCommand: 'npm run start'
+          
+              
