@@ -1,10 +1,19 @@
 # Node.js Express Web App to Linux on Azure
+# Build a Node.js Express app and deploy it to Azure as a Linux web app.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+
 trigger:
 - master
 
 variables:
+
+  # Azure Resource Manager connection created during pipeline creation
   azureSubscription: 'd3df9ba4-21d2-41ed-8c5b-8f98396e968f'
+
+  # Web app name
   webAppName: 'sample202425'
+
   environmentName: 'sample202425'
 
 stages:
@@ -17,14 +26,12 @@ stages:
       name: Default
 
     steps:
-    # Install Node.js
     - task: NodeTool@0
       inputs:
         versionSource: 'spec'
         versionSpec: '23.x'
       displayName: 'Install Node.js'
 
-    # Install dependencies
     - task: Npm@1
       inputs:
         command: 'custom'
@@ -32,17 +39,20 @@ stages:
         customCommand: 'install --legacy-peer-deps'
       displayName: 'Install dependencies'
 
-    # Integrate SonarQube - Prepare Analysis
-    - task: SonarQubePrepare@5
+    - task: SonarQubePrepare@7
       inputs:
-        SonarQube: 'SonarQubeServiceEndpoint' # Replace with the name of your SonarQube service connection
-        scannerMode: 'CLI'
+        SonarQube: 'SonarQube'
+        scannerMode: 'cli'
         configMode: 'manual'
-        cliProjectKey: 'sample202425' # Unique project key in SonarQube
+        cliProjectKey: 'dec2024devops_CICDwithSonar'
+        cliProjectName: 'CICDwithSonar'
         cliSources: '$(Build.SourcesDirectory)/samplenodejs'
-      displayName: 'Prepare SonarQube Analysis'
-
-    # Build the application
+        extraProperties: |
+          # Additional properties that will be passed to the scanner, 
+          # Put one key=value per line, example:
+          # sonar.exclusions=**/*.bin
+          sonar.organization=dec2024devops
+      displayName: 'Prepare SonarQube Analysis'  
     - task: CmdLine@2
       inputs:
         script: |
@@ -50,30 +60,21 @@ stages:
         workingDirectory: '$(Build.SourcesDirectory)/samplenodejs'
       displayName: 'Run application'
 
-    # Run Unit Tests
     - task: CmdLine@2
       inputs:
         script: 'npm test -- --reporter mocha-junit-reporter --reporter-options mochaFile=test-results.xml'
         workingDirectory: '$(Build.SourcesDirectory)/samplenodejs/tests'
       displayName: 'Run unit tests'
-
-    # Publish Test Results
     - task: PublishTestResults@2
       inputs:
         testResultsFormat: 'JUnit'
         testResultsFiles: '**/test-*.xml'
-
-    # Integrate SonarQube - Run Analysis
-    - task: SonarQubeAnalyze@5
-      displayName: 'Run SonarQube Analysis'
-
-    # Integrate SonarQube - Publish Quality Gate
-    - task: SonarQubePublish@5
+    - task: SonarQubeAnalyze@7
+      
+    - task: SonarQubePublish@7
       inputs:
         pollingTimeoutSec: '300'
       displayName: 'Publish SonarQube Quality Gate Result'
-
-    # Archive Build Artifacts
     - task: ArchiveFiles@2
       inputs:
        rootFolderOrFile: '$(System.DefaultWorkingDirectory)/samplenodejs'
@@ -81,13 +82,12 @@ stages:
        archiveType: 'zip'
        archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
        replaceExistingArchive: true
-
-    # Publish Build Artifacts
     - task: PublishBuildArtifacts@1
       inputs:
         PathtoPublish: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
         ArtifactName: 'node24dec'
         publishLocation: 'Container'
+
 
 - stage: Deploy
   displayName: Deploy stage
@@ -111,4 +111,5 @@ stages:
               WebAppName: '$(webAppName)'
               package: '$(Pipeline.Workspace)/node24dec/$(Build.BuildId).zip'
               runtimeStack: 'NODE|20LTS'
-
+          
+              
