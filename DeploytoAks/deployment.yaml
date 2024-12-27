@@ -1,11 +1,10 @@
-apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nodeapp-deployment
   labels:
     app: nodeapp
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: nodeapp
@@ -21,14 +20,13 @@ spec:
         - containerPort: 3000
         readinessProbe:
           httpGet:
-            path: /health
+            path: /
             port: 3000
           initialDelaySeconds: 5
           periodSeconds: 10
         livenessProbe:
           httpGet:
-            path: /health
+            path: /
             port: 3000
           initialDelaySeconds: 15
           periodSeconds: 20
-
