@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: myapp-deployment
+  name: nodeapp-deployment
   labels:
-    app: myapp
+    app: nodeapp
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: myapp
+      app: nodeapp
   template:
     metadata:
       labels:
-        app: myapp
+        app: nodeapp
     spec:
       containers:
-      - name: myapp-container
-        image: <ACRName>.azurecr.io/myapp:latest
+      - name: nodeapp-container
+        image: anujam.azurecr.io/samplenodeapp:latest
         ports:
         - containerPort: 3000
         readinessProbe:
